@@ -4,7 +4,30 @@ import { NextResponse } from 'next/server';
 import { faker } from '@faker-js/faker';
 
 export async function GET(request) {
-    return NextResponse.json({ message: 'Send a POST request to this endpoint to seed the database.' });
+    await dbConnect();
+
+    try {
+        const leads = [];
+        const statuses = ['New', 'Contacted', 'Qualified', 'Lost', 'Converted'];
+
+        for (let i = 0; i < 50; i++) {
+            const status = statuses[Math.floor(Math.random() * statuses.length)];
+            leads.push({
+                name: faker.person.fullName(),
+                email: faker.internet.email(),
+                phone: faker.phone.number(),
+                status: status,
+                source: faker.helpers.arrayElement(['Website', 'LinkedIn', 'Referral', 'Cold Call', 'Ads']),
+                createdAt: faker.date.past({ years: 1 })
+            });
+        }
+
+        await Lead.insertMany(leads);
+
+        return NextResponse.json({ success: true, message: 'Seeded 50 leads successfully via GET!' });
+    } catch (error) {
+        return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+    }
 }
 
 export async function POST(request) {
