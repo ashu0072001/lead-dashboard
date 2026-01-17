@@ -1,13 +1,13 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, use } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, Mail, Phone, Calendar, User, Tag, Trash2 } from 'lucide-react';
 
 export default function LeadDetail({ params }) {
     const router = useRouter();
-    const { id } = params;
+    const { id } = use(params);
     const [lead, setLead] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
