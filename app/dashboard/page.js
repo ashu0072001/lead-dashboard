@@ -67,34 +67,32 @@ export default function Dashboard() {
         ) : leads.length === 0 ? (
             <tr><td colSpan="5" className="px-6 py-4 text-center text-black">No leads found.</td></tr>
         ) : (
-            <tr><td colSpan="5" className="px-6 py-4 text-center text-black">No leads found.</td></tr>
-        ) : (
-                                leads.map((lead) => (
-        <tr key={lead._id} className="hover:bg-gray-50 transition">
-            <td className="px-6 py-4 whitespace-nowrap">
-                <div className="flex flex-col">
-                    <div className="text-sm font-medium text-gray-900">{lead.name}</div>
-                    <div className="text-sm text-gray-500">{lead.email}</div>
-                </div>
-            </td>
-            <td className="px-6 py-4 whitespace-nowrap">
-                <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
+            leads.map((lead) => (
+                <tr key={lead._id} className="hover:bg-gray-50 transition">
+                    <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="flex flex-col">
+                            <div className="text-sm font-medium text-gray-900">{lead.name}</div>
+                            <div className="text-sm text-gray-500">{lead.email}</div>
+                        </div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                        <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
                                         ${lead.status === 'New' ? 'bg-blue-100 text-blue-800' :
-                        lead.status === 'Converted' ? 'bg-green-100 text-green-800' :
-                            lead.status === 'Lost' ? 'bg-red-100 text-red-800' : 'bg-gray-100 text-gray-800'}`}>
-                    {lead.status}
-                </span>
-            </td>
-            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{lead.source}</td>
-            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                {new Date(lead.createdAt).toLocaleDateString()}
-            </td>
-            <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                <Link href={`/dashboard/${lead._id}`} className="text-indigo-600 hover:text-indigo-900">View</Link>
-            </td>
-        </tr>
-        ))
-                            )}
+                                lead.status === 'Converted' ? 'bg-green-100 text-green-800' :
+                                    lead.status === 'Lost' ? 'bg-red-100 text-red-800' : 'bg-gray-100 text-gray-800'}`}>
+                            {lead.status}
+                        </span>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{lead.source}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        {new Date(lead.createdAt).toLocaleDateString()}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                        <Link href={`/dashboard/${lead._id}`} className="text-indigo-600 hover:text-indigo-900">View</Link>
+                    </td>
+                </tr>
+            ))
+        )}
     </tbody>
                     </table >
                 </div >
