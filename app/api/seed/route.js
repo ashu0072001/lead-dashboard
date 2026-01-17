@@ -15,7 +15,7 @@ export async function GET(request) {
             leads.push({
                 name: faker.person.fullName(),
                 email: faker.internet.email(),
-                phone: faker.phone.number(),
+                phone: faker.phone.number({ style: 'international' }).substring(0, 20),
                 status: status,
                 source: faker.helpers.arrayElement(['Website', 'LinkedIn', 'Referral', 'Cold Call', 'Ads']),
                 createdAt: faker.date.past({ years: 1 })
