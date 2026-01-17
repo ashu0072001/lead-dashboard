@@ -20,7 +20,7 @@ export async function GET(request) {
         query.$or = [
             { name: { $regex: search, $options: 'i' } },
             { email: { $regex: search, $options: 'i' } },
-            { phone: { $regex: search, $options: 'iSource' } }, // Assuming typical search fields
+            { phone: { $regex: search, $options: 'i' } }, // Assuming typical search fields
         ];
     }
 
