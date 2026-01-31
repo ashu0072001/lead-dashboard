@@ -18,6 +18,10 @@ export default function DashboardLayout({ children }) {
                         <Users className="w-5 h-5 mr-3" />
                         Leads
                     </Link>
+    <Link href="/dashboard" className="flex items-center px-6 py-3 hover:bg-slate-800 transition-colors">
+                        <Users className="w-5 h-5 mr-3" />
+                        Contact Us 
+                    </Link>
                     {/* <Link href="/analytics" className="flex items-center px-6 py-3 hover:bg-slate-800 transition-colors">
             <BarChart3 className="w-5 h-5 mr-3" />
             Analytics
